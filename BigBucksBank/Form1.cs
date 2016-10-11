@@ -10,8 +10,21 @@ using System.Windows.Forms;
 
 namespace BigBucksBank
 {
+    public delegate void ChangeHandler(TextBox tbUsername);
+    
+    
     public partial class LandATM : Form
     {
+        tbUsername.ChangeHandler = new ChangeHandler(isAdminUsername);
+
+        private struct Admin
+        {
+            public string name;
+            public string pin;
+
+        }
+        private Admin admin;
+        private bool isAdminOn = false;
         const int LOGIN_ATTEMPTS = 3;
         const int SIZE = 5;
         Account[] accounts;
@@ -30,6 +43,7 @@ namespace BigBucksBank
                                            "333333",
                                            "444444",
                                            "555555"};
+        
 
         public LandATM()
         {
@@ -38,6 +52,8 @@ namespace BigBucksBank
 
         private void LandATM_Load(object sender, EventArgs e)
         {
+            admin = new Admin();
+            
             loadAccounts();
 
             //DEBUG
@@ -77,7 +93,7 @@ namespace BigBucksBank
             {
                 Console.WriteLine("User found");
                 tbUsername.Focus();
-                if (correctPin(acctIndex))
+                if (isCorrectPin(acctIndex))
                 {
                     Console.WriteLine("Login successful");
                     tbPIN.Text = "";
@@ -85,13 +101,17 @@ namespace BigBucksBank
                 }
                 else
                 {
-                    Console.WriteLine("PIN NOT Found");
-                    tbPIN.Text = "";
                     accounts[acctIndex].loginAttempts++;
+                    txtArea.Text = "INCORRECT PIN entered.\n" + 
+                                    (LOGIN_ATTEMPTS - accounts[acctIndex].loginAttempts) +
+                                    " attempts left";
+                    tbPIN.Text = "";
+                    
                     if(accounts[acctIndex].loginAttempts == LOGIN_ATTEMPTS)
                     {
                         //Lock out and wait for admin
-                        Console.WriteLine("Locked out");
+                        txtArea.Text = "LOCKED OUT. Please get assistance from administrator";
+                        showButtons(false);
                     }
                 }
 
@@ -116,7 +136,7 @@ namespace BigBucksBank
             return -1;
         }
 
-        private bool correctPin(int i)
+        private bool isCorrectPin(int i)
         {
             if (accounts[i].Pin.Equals(tbPIN.Text)){
                 return true;
@@ -126,5 +146,12 @@ namespace BigBucksBank
                 return false;
             }
         }
+
+        private void showButtons(bool val)
+        {
+            btnClear.Enabled = val;
+            btnLogin.Enabled = val;
+        }
+        private isAdminUsername
     }
 }
