@@ -25,11 +25,11 @@ namespace BigBucksBank
         
         }
 
-        public Account(String userName, String pin, string acctNumber) {
+        public Account(String userName, String pin, string acctNumber, decimal checking, decimal savings) {
             this.userName = userName;
             this.pin = pin;
-            checking = 0.00m;
-            savings = 0.00m;
+            this.checking = checking;
+            this.savings = 0.00m;
             account = acctNumber;
             loginAttempts = 0;
         }
@@ -78,7 +78,7 @@ namespace BigBucksBank
             {
                 try
                 {
-                    decimal temp = Convert.ToDecimal(value);
+                    //decimal temp = Convert.ToDecimal(value);
                     checking = value;
                 }
                 catch (OverflowException)
@@ -99,8 +99,8 @@ namespace BigBucksBank
             {
                 try
                 {
-                    decimal temp = Convert.ToDecimal(value);
-                    checking = value;
+                    //decimal temp = Convert.ToDecimal(value);
+                    savings = value;
                 }
                 catch (OverflowException)
                 {
@@ -138,8 +138,8 @@ namespace BigBucksBank
                 "-------------------------------------------------\n" +
                 "Username:     " + userName + "\n" +
                 "Account:      " + account + "\n" +
-                "CHECKING:     " + checking + "\n" +
-                "SAVINGS:      " + savings;
+                "CHECKING:     " + checking.ToString("c") + "\n" +
+                "SAVINGS:      " + savings.ToString("c");
         }
     }
 }

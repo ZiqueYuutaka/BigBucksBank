@@ -1,1 +1,9 @@
 D:\VisualStudioProjects\BigBucksBank\BigBucksBank\bin\Debug\BigBucksBank.exe.config
+D:\VisualStudioProjects\BigBucksBank\BigBucksBank\bin\Debug\BigBucksBank.exe
+D:\VisualStudioProjects\BigBucksBank\BigBucksBank\bin\Debug\BigBucksBank.pdb
+D:\VisualStudioProjects\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.csprojResolveAssemblyReference.cache
+D:\VisualStudioProjects\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.LandATM.resources
+D:\VisualStudioProjects\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.Properties.Resources.resources
+D:\VisualStudioProjects\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.csproj.GenerateResource.Cache
+D:\VisualStudioProjects\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.exe
+D:\VisualStudioProjects\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.pdb
