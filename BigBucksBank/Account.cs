@@ -13,14 +13,14 @@ namespace BigBucksBank
         private decimal checking;
         private decimal savings;
         private string account;
-        private int loginAttempts;
+        public int loginAttempts;
 
         public Account() {
             userName = "";
             pin = "";
             checking = 0.00m;
             savings = 0.00m;
-            account = "0000000000";
+            account = "000000";
             loginAttempts = 0;
         
         }
@@ -122,13 +122,13 @@ namespace BigBucksBank
             }
         }//End AcctNumber
 
-        public int LoginAttempts
+        /*public int LoginAttempts
         {
             get
             {
                 return loginAttempts;
             }
-        }
+        }*/
 
         public string receipt()
         {

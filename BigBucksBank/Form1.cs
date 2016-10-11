@@ -69,5 +69,62 @@ namespace BigBucksBank
                 Console.WriteLine(accounts[i].receipt());
             }
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            int acctIndex = accountExists();
+            if (acctIndex != -1)
+            {
+                Console.WriteLine("User found");
+                tbUsername.Focus();
+                if (correctPin(acctIndex))
+                {
+                    Console.WriteLine("Login successful");
+                    tbPIN.Text = "";
+
+                }
+                else
+                {
+                    Console.WriteLine("PIN NOT Found");
+                    tbPIN.Text = "";
+                    accounts[acctIndex].loginAttempts++;
+                    if(accounts[acctIndex].loginAttempts == LOGIN_ATTEMPTS)
+                    {
+                        //Lock out and wait for admin
+                        Console.WriteLine("Locked out");
+                    }
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("No user found");
+                tbUsername.Text = "";
+                tbUsername.Focus();
+            }
+        }
+
+        private int accountExists()
+        {
+            for(int i = 0; i < SIZE; i++)
+            {
+                if (accounts[i].UserName.Equals(tbUsername.Text))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        private bool correctPin(int i)
+        {
+            if (accounts[i].Pin.Equals(tbPIN.Text)){
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
