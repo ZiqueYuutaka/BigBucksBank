@@ -32,11 +32,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbUsername = new System.Windows.Forms.TextBox();
+            this.tbPIN = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.txtArea = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -79,19 +79,19 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "PIN";
             // 
-            // textBox1
+            // tbUsername
             // 
-            this.textBox1.Location = new System.Drawing.Point(260, 149);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(209, 20);
-            this.textBox1.TabIndex = 4;
+            this.tbUsername.Location = new System.Drawing.Point(260, 149);
+            this.tbUsername.Name = "tbUsername";
+            this.tbUsername.Size = new System.Drawing.Size(209, 20);
+            this.tbUsername.TabIndex = 4;
             // 
-            // textBox2
+            // tbPIN
             // 
-            this.textBox2.Location = new System.Drawing.Point(260, 210);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(209, 20);
-            this.textBox2.TabIndex = 5;
+            this.tbPIN.Location = new System.Drawing.Point(260, 210);
+            this.tbPIN.Name = "tbPIN";
+            this.tbPIN.Size = new System.Drawing.Size(209, 20);
+            this.tbPIN.TabIndex = 5;
             // 
             // btnLogin
             // 
@@ -102,39 +102,40 @@
             this.btnLogin.Text = "Log In";
             this.btnLogin.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnClear
             // 
-            this.button2.Location = new System.Drawing.Point(340, 419);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(171, 44);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnClear.Location = new System.Drawing.Point(340, 419);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(171, 44);
+            this.btnClear.TabIndex = 7;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
             // 
-            // richTextBox1
+            // txtArea
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(142, 272);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(327, 112);
-            this.richTextBox1.TabIndex = 8;
-            this.richTextBox1.Text = "";
+            this.txtArea.Location = new System.Drawing.Point(142, 272);
+            this.txtArea.Name = "txtArea";
+            this.txtArea.Size = new System.Drawing.Size(327, 112);
+            this.txtArea.TabIndex = 8;
+            this.txtArea.Text = "";
             // 
             // LandATM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 532);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.txtArea);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbPIN);
+            this.Controls.Add(this.tbUsername);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "LandATM";
             this.Text = "Welcome";
+            this.Load += new System.EventHandler(this.LandATM_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,11 +147,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbUsername;
+        private System.Windows.Forms.TextBox tbPIN;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.RichTextBox txtArea;
     }
 }
 
