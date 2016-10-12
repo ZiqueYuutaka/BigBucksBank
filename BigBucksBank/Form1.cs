@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace BigBucksBank
 {
-    public delegate void ChangeHandler(TextBox tbUsername);
-    
+   
     
     public partial class LandATM : Form
     {
-        tbUsername.ChangeHandler = new ChangeHandler(isAdminUsername);
+        public delegate bool ChangeHandler(TextBox tb);
+        public event ChangeHandler Changed;
 
         private struct Admin
         {
@@ -23,7 +23,7 @@ namespace BigBucksBank
             public string pin;
 
         }
-        private Admin admin;
+        //private Admin admin, tempAdmin;
         private bool isAdminOn = false;
         const int LOGIN_ATTEMPTS = 3;
         const int SIZE = 5;
@@ -53,6 +53,8 @@ namespace BigBucksBank
         private void LandATM_Load(object sender, EventArgs e)
         {
             admin = new Admin();
+
+            this.Changed = new LandATM.ChangeHandler(isAdminUsername);
             
             loadAccounts();
 
@@ -76,6 +78,12 @@ namespace BigBucksBank
                 temp = Convert.ToDecimal(randAcct.Next(10000, 99999));
                 accounts[i].Savings = temp;
             }
+            //Create admin account
+            /*admin.name = "ADMIN";
+            admin.pin = "12345";
+
+            tempAdmin.name = "";
+            tempAdmin.pin = "";*/
         }
 
         private void printAccounts()
@@ -152,6 +160,23 @@ namespace BigBucksBank
             btnClear.Enabled = val;
             btnLogin.Enabled = val;
         }
-        private isAdminUsername
+
+        private void tbUsername_TextChanged(object sender, EventArgs e)
+        {
+            if (Changed(tbUsername))
+            {
+                showButtons(true);
+                
+            }
+        }
+
+        private bool isAdminUsername(TextBox textBox)
+        {
+            if (textBox.Text.Equals("ADMIN"))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }
