@@ -25,7 +25,8 @@ namespace BigBucksBank
 
         }*/
         //private Admin admin, tempAdmin;
-        //private bool isAdminOn = false;
+        private bool isAdminOn = false;
+        private bool isLockedOut = false;
         const int TOTAL_ATTEMPTS = 3;
         const int SIZE = 5;
         Account[] accounts;
@@ -117,6 +118,9 @@ namespace BigBucksBank
                     tbPIN.Text = "";
                     //Launch User's ATM interface
 
+                    clearFields();
+                    login_attempts = 0;
+
                 }
                 else
                 {
@@ -169,6 +173,7 @@ namespace BigBucksBank
                 showButtons(false);
                 enableButtons(false);
                 tbPIN.Enabled = false;
+                isLockedOut = true;
             }
         }
 
@@ -221,11 +226,17 @@ namespace BigBucksBank
 
         private void tbPIN_TextChanged(object sender, EventArgs e)
         {
-            if (pinChanged(tbPIN)) {
+            if (pinChanged(tbPIN) && isLockedOut) {
                 enableButtons(true);
                 login_attempts = 0;
                 clearFields();
                 txtArea.Text = "ATM unlock successful";
+                isLockedOut = false;
+            }
+            else
+            {
+                txtArea.Enabled = false;
+                showButtons(false);
             }
         }
 
@@ -234,6 +245,11 @@ namespace BigBucksBank
             tbUsername.Text = "";
             tbPIN.Text = "";
             tbUsername.Focus();
+        }
+
+        private void btnPower_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
