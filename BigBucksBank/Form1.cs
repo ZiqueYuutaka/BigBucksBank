@@ -26,10 +26,11 @@ namespace BigBucksBank
         }*/
         //private Admin admin, tempAdmin;
         //private bool isAdminOn = false;
-        const int LOGIN_ATTEMPTS = 3;
+        const int TOTAL_ATTEMPTS = 3;
         const int SIZE = 5;
         Account[] accounts;
         int acctIndex;
+        int login_attempts = 0;
         private string[] userNames = {"StevenJones",
                                   "SusanMitchell",
                                   "JohnSmith",
@@ -112,27 +113,12 @@ namespace BigBucksBank
                 }
                 else
                 {
-                    accounts[acctIndex].loginAttempts++;
-                    txtArea.Text = "INCORRECT PIN entered.\n" +
-                                    (LOGIN_ATTEMPTS - accounts[acctIndex].loginAttempts) +
-                                    " attempts left for user: \n" + accounts[acctIndex].UserName;
-                    clearFields();
-                    if (accounts[acctIndex].loginAttempts == LOGIN_ATTEMPTS)
-                    {
-                        //Lock out and wait for admin
-                        txtArea.Text = "LOCKED OUT. Please get assistance from administrator";
-                        clearFields();
-                        showButtons(false);
-                        enableButtons(false);
-                        tbPIN.Enabled = false;
-                    }
+                    loginIncorrect();
                 }
 
-            }
-            else
+            }else
             {
-                Console.WriteLine("No user found");
-                clearFields();
+                loginIncorrect();
             }
         }
 
@@ -156,6 +142,24 @@ namespace BigBucksBank
             else
             {
                 return false;
+            }
+        }
+
+        private void loginIncorrect()
+        {
+            login_attempts++;
+            txtArea.Text = "Incorrect PIN and USERNAME combination entered.\n" +
+                            (TOTAL_ATTEMPTS - login_attempts) +
+                            " attempts left";
+            clearFields();
+            if (login_attempts == TOTAL_ATTEMPTS)
+            {
+                //Lock out and wait for admin
+                txtArea.Text = "LOCKED OUT. Please get assistance from administrator";
+                clearFields();
+                showButtons(false);
+                enableButtons(false);
+                tbPIN.Enabled = false;
             }
         }
 
@@ -210,7 +214,7 @@ namespace BigBucksBank
         {
             if (pinChanged(tbPIN)) {
                 enableButtons(true);
-                accounts[acctIndex].loginAttempts = 0;
+                login_attempts = 0;
                 clearFields();
                 txtArea.Text = "ATM unlock successful";
             }

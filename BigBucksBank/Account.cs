@@ -13,7 +13,6 @@ namespace BigBucksBank
         private decimal checking;
         private decimal savings;
         private string account;
-        public int loginAttempts;
 
         public Account() {
             userName = "";
@@ -21,7 +20,6 @@ namespace BigBucksBank
             checking = 0.00m;
             savings = 0.00m;
             account = "000000";
-            loginAttempts = 0;
         
         }
 
@@ -31,7 +29,6 @@ namespace BigBucksBank
             this.checking = checking;
             this.savings = 0.00m;
             account = acctNumber;
-            loginAttempts = 0;
         }
 
         public string UserName
