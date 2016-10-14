@@ -10,24 +10,26 @@ using System.Windows.Forms;
 
 namespace BigBucksBank
 {
-   
-    
+
+
     public partial class LandATM : Form
     {
         public delegate bool ChangeHandler(TextBox tb);
-        public event ChangeHandler Changed;
+        public event ChangeHandler usernameChanged;
+        public event ChangeHandler pinChanged;
 
-        private struct Admin
+        /*private struct Admin
         {
             public string name;
             public string pin;
 
-        }
+        }*/
         //private Admin admin, tempAdmin;
-        private bool isAdminOn = false;
+        //private bool isAdminOn = false;
         const int LOGIN_ATTEMPTS = 3;
         const int SIZE = 5;
         Account[] accounts;
+        int acctIndex;
         private string[] userNames = {"StevenJones",
                                   "SusanMitchell",
                                   "JohnSmith",
@@ -43,7 +45,7 @@ namespace BigBucksBank
                                            "333333",
                                            "444444",
                                            "555555"};
-        
+
 
         public LandATM()
         {
@@ -52,10 +54,11 @@ namespace BigBucksBank
 
         private void LandATM_Load(object sender, EventArgs e)
         {
-            admin = new Admin();
+            //admin = new Admin();
 
-            this.Changed = new LandATM.ChangeHandler(isAdminUsername);
-            
+            this.usernameChanged = new LandATM.ChangeHandler(isAdminUsername);
+            this.pinChanged = new LandATM.ChangeHandler(isAdminPIN);
+
             loadAccounts();
 
             //DEBUG
@@ -96,7 +99,7 @@ namespace BigBucksBank
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            int acctIndex = accountExists();
+            acctIndex = accountExists();
             if (acctIndex != -1)
             {
                 Console.WriteLine("User found");
@@ -110,16 +113,18 @@ namespace BigBucksBank
                 else
                 {
                     accounts[acctIndex].loginAttempts++;
-                    txtArea.Text = "INCORRECT PIN entered.\n" + 
+                    txtArea.Text = "INCORRECT PIN entered.\n" +
                                     (LOGIN_ATTEMPTS - accounts[acctIndex].loginAttempts) +
-                                    " attempts left";
-                    tbPIN.Text = "";
-                    
-                    if(accounts[acctIndex].loginAttempts == LOGIN_ATTEMPTS)
+                                    " attempts left for user: \n" + accounts[acctIndex].UserName;
+                    clearFields();
+                    if (accounts[acctIndex].loginAttempts == LOGIN_ATTEMPTS)
                     {
                         //Lock out and wait for admin
                         txtArea.Text = "LOCKED OUT. Please get assistance from administrator";
+                        clearFields();
                         showButtons(false);
+                        enableButtons(false);
+                        tbPIN.Enabled = false;
                     }
                 }
 
@@ -127,14 +132,13 @@ namespace BigBucksBank
             else
             {
                 Console.WriteLine("No user found");
-                tbUsername.Text = "";
-                tbUsername.Focus();
+                clearFields();
             }
         }
 
         private int accountExists()
         {
-            for(int i = 0; i < SIZE; i++)
+            for (int i = 0; i < SIZE; i++)
             {
                 if (accounts[i].UserName.Equals(tbUsername.Text))
                 {
@@ -146,7 +150,7 @@ namespace BigBucksBank
 
         private bool isCorrectPin(int i)
         {
-            if (accounts[i].Pin.Equals(tbPIN.Text)){
+            if (accounts[i].Pin.Equals(tbPIN.Text)) {
                 return true;
             }
             else
@@ -157,16 +161,30 @@ namespace BigBucksBank
 
         private void showButtons(bool val)
         {
+            if (val)
+            {
+                btnClear.Show();
+                btnLogin.Show();
+            } else
+            {
+                btnClear.Hide();
+                btnLogin.Hide();
+            }
+        }
+
+        private void enableButtons(bool val)
+        {
             btnClear.Enabled = val;
             btnLogin.Enabled = val;
         }
 
         private void tbUsername_TextChanged(object sender, EventArgs e)
         {
-            if (Changed(tbUsername))
+            if (usernameChanged(tbUsername))
             {
                 showButtons(true);
-                
+                tbPIN.Enabled = true;
+
             }
         }
 
@@ -177,6 +195,32 @@ namespace BigBucksBank
                 return true;
             }
             return false;
+        }
+
+        private bool isAdminPIN(TextBox textBox)
+        {
+            if (textBox.Text.Equals("12345"))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void tbPIN_TextChanged(object sender, EventArgs e)
+        {
+            if (pinChanged(tbPIN)) {
+                enableButtons(true);
+                accounts[acctIndex].loginAttempts = 0;
+                clearFields();
+                txtArea.Text = "ATM unlock successful";
+            }
+        }
+
+        private void clearFields()
+        {
+            tbUsername.Text = "";
+            tbPIN.Text = "";
+            tbUsername.Focus();
         }
     }
 }

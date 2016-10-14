@@ -93,6 +93,7 @@
             this.tbPIN.Name = "tbPIN";
             this.tbPIN.Size = new System.Drawing.Size(209, 20);
             this.tbPIN.TabIndex = 5;
+            this.tbPIN.TextChanged += new System.EventHandler(this.tbPIN_TextChanged);
             // 
             // btnLogin
             // 
