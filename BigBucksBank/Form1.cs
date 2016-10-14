@@ -30,23 +30,7 @@ namespace BigBucksBank
         const int SIZE = 5;
         Account[] accounts;
         int acctIndex;
-        int login_attempts = 0;
-        private string[] userNames = {"StevenJones",
-                                  "SusanMitchell",
-                                  "JohnSmith",
-                                  "CarolMichaels",
-                                  "PaulGordon" };
-        private string[] pins = {"1111",
-                                 "2222",
-                                 "3333",
-                                 "4444",
-                                 "5555"};
-        private string[] accountNumbers = {"111111",
-                                           "222222",
-                                           "333333",
-                                           "444444",
-                                           "555555"};
-
+        int login_attempts = 0;       
 
         public LandATM()
         {
@@ -68,19 +52,41 @@ namespace BigBucksBank
 
         private void loadAccounts()
         {
+            string[] userNames = {"StevenJones",
+                                  "SusanMitchell",
+                                  "JohnSmith",
+                                  "CarolMichaels",
+                                  "PaulGordon" };
+            string[] pins = {"1111",
+                              "2222",
+                              "3333",
+                              "4444",
+                              "5555"};
+            string[] accountNumbers = {"11111",
+                                       "222222",
+                                       "333333",
+                                       "444444",
+                                       "555555",
+                                       "666666",
+                                       "777777",
+                                       "888888",
+                                       "999999",
+                                       "000000"};
+
             accounts = new Account[SIZE];
             Random randAcct = new Random(123);
             decimal temp;
-            for (int i = 0; i < SIZE; i++)
+            for (int i = 0, j = 0; i < SIZE; i++)
             {
                 accounts[i] = new Account();
                 accounts[i].UserName = userNames[i];
                 accounts[i].Pin = pins[i];
-                accounts[i].AcctNumber = accountNumbers[i];
+                accounts[i].CheckingAccount = accountNumbers[j++];
+                accounts[i].SavingsAccount = accountNumbers[j++];
                 temp = Convert.ToDecimal(randAcct.Next(1000, 9999));
-                accounts[i].Checking = temp;
+                accounts[i].CheckingAmount = temp;
                 temp = Convert.ToDecimal(randAcct.Next(10000, 99999));
-                accounts[i].Savings = temp;
+                accounts[i].SavingsAmount = temp;
             }
             //Create admin account
             /*admin.name = "ADMIN";
@@ -109,16 +115,19 @@ namespace BigBucksBank
                 {
                     Console.WriteLine("Login successful");
                     tbPIN.Text = "";
+                    //Launch User's ATM interface
 
                 }
                 else
                 {
                     loginIncorrect();
+                    Console.WriteLine("Incorrect PIN");
                 }
 
             }else
             {
                 loginIncorrect();
+                Console.WriteLine("User NOT found");
             }
         }
 
@@ -155,7 +164,7 @@ namespace BigBucksBank
             if (login_attempts == TOTAL_ATTEMPTS)
             {
                 //Lock out and wait for admin
-                txtArea.Text = "LOCKED OUT. Please get assistance from administrator";
+                txtArea.Text = "PLEASE SEE A BANK OFFICER-NO FURTHER LOGIN ATTEMPTS ALLOWED";
                 clearFields();
                 showButtons(false);
                 enableButtons(false);
