@@ -37,6 +37,7 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.txtArea = new System.Windows.Forms.RichTextBox();
+            this.btnPower = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -85,6 +86,7 @@
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(209, 20);
             this.tbUsername.TabIndex = 4;
+            this.tbUsername.TextChanged += new System.EventHandler(this.tbUsername_TextChanged);
             // 
             // tbPIN
             // 
@@ -111,6 +113,7 @@
             this.btnClear.TabIndex = 7;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // txtArea
             // 
@@ -120,11 +123,24 @@
             this.txtArea.TabIndex = 8;
             this.txtArea.Text = "";
             // 
+            // btnPower
+            // 
+            this.btnPower.BackColor = System.Drawing.Color.Red;
+            this.btnPower.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPower.Location = new System.Drawing.Point(99, 406);
+            this.btnPower.Name = "btnPower";
+            this.btnPower.Size = new System.Drawing.Size(412, 71);
+            this.btnPower.TabIndex = 9;
+            this.btnPower.Text = "POWER DOWN";
+            this.btnPower.UseVisualStyleBackColor = false;
+            this.btnPower.Click += new System.EventHandler(this.btnPower_Click);
+            // 
             // LandATM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 532);
+            this.ControlBox = false;
             this.Controls.Add(this.txtArea);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnLogin);
@@ -134,6 +150,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnPower);
             this.Name = "LandATM";
             this.Text = "Welcome";
             this.Load += new System.EventHandler(this.LandATM_Load);
@@ -153,6 +170,7 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.RichTextBox txtArea;
+        private System.Windows.Forms.Button btnPower;
     }
 }
 

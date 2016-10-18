@@ -10,28 +10,29 @@ namespace BigBucksBank
     {
         private string userName;
         private string pin;
-        private decimal checking;
-        private decimal savings;
-        private string account;
-        public int loginAttempts;
+        private decimal checkingAmount;
+        private decimal savingsAmount;
+        private string checkingAccount;
+        private string savingAccount;
 
         public Account() {
             userName = "";
             pin = "";
-            checking = 0.00m;
-            savings = 0.00m;
-            account = "000000";
-            loginAttempts = 0;
+            checkingAmount = 0.00m;
+            savingsAmount = 0.00m;
+            checkingAccount = "000000";
+            savingAccount = "000000";
         
         }
 
-        public Account(String userName, String pin, string acctNumber, decimal checking, decimal savings) {
+        public Account(String userName, String pin, string checkingNumber,
+                        string savingNumber, decimal checking, decimal savings) {
             this.userName = userName;
             this.pin = pin;
-            this.checking = checking;
-            this.savings = 0.00m;
-            account = acctNumber;
-            loginAttempts = 0;
+            this.checkingAmount = checking;
+            this.savingsAmount = 0.00m;
+            checkingAccount = checkingNumber;
+            savingAccount = savingNumber;
         }
 
         public string UserName
@@ -68,18 +69,18 @@ namespace BigBucksBank
             }
         }//End Pin
 
-        public decimal Checking
+        public decimal CheckingAmount
         {
             get
             {
-                return checking;
+                return checkingAmount;
             }
             set
             {
                 try
                 {
                     //decimal temp = Convert.ToDecimal(value);
-                    checking = value;
+                    checkingAmount = value;
                 }
                 catch (OverflowException)
                 {
@@ -89,18 +90,18 @@ namespace BigBucksBank
             }
         }// End Checking
 
-        public decimal Savings
+        public decimal SavingsAmount
         {
             get
             {
-                return savings;
+                return savingsAmount;
             }
             set
             {
                 try
                 {
                     //decimal temp = Convert.ToDecimal(value);
-                    savings = value;
+                    savingsAmount = value;
                 }
                 catch (OverflowException)
                 {
@@ -110,17 +111,29 @@ namespace BigBucksBank
             }
         }//End Savings
 
-        public string AcctNumber
+        public string CheckingAccount
         {
             get
             {
-                return account;
+                return checkingAccount;
             }
             set
             {
-                account = value;
+                checkingAccount = value;
             }
-        }//End AcctNumber
+        }//End CheckingAccount
+
+        public string SavingsAccount
+        {
+            get
+            {
+                return savingAccount;
+            }
+            set
+            {
+                savingAccount = value;
+            }
+        }
 
         /*public int LoginAttempts
         {
@@ -137,9 +150,10 @@ namespace BigBucksBank
                 "                   ACCOUNT                       \n" +
                 "-------------------------------------------------\n" +
                 "Username:     " + userName + "\n" +
-                "Account:      " + account + "\n" +
-                "CHECKING:     " + checking.ToString("c") + "\n" +
-                "SAVINGS:      " + savings.ToString("c");
+                "CHECKINGACCT: " + checkingAccount + "\n" +
+                "CHECKING:     " + checkingAmount.ToString("c") + "\n" +
+                "SAVINGSACCT:  " + savingAccount + "\n" +
+                "SAVINGS:      " + savingsAmount.ToString("c");
         }
     }
 }

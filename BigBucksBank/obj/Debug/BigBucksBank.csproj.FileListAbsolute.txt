@@ -7,3 +7,12 @@ D:\VisualStudioProjects\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.Propert
 D:\VisualStudioProjects\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.csproj.GenerateResource.Cache
 D:\VisualStudioProjects\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.exe
 D:\VisualStudioProjects\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.pdb
+C:\Users\Zique Yuutaka\Documents\Visual Studio 2015\Projects\BigBucksBank\BigBucksBank\BigBucksBank\bin\Debug\BigBucksBank.exe.config
+C:\Users\Zique Yuutaka\Documents\Visual Studio 2015\Projects\BigBucksBank\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.exe
+C:\Users\Zique Yuutaka\Documents\Visual Studio 2015\Projects\BigBucksBank\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.pdb
+C:\Users\Zique Yuutaka\Documents\Visual Studio 2015\Projects\BigBucksBank\BigBucksBank\BigBucksBank\bin\Debug\BigBucksBank.exe
+C:\Users\Zique Yuutaka\Documents\Visual Studio 2015\Projects\BigBucksBank\BigBucksBank\BigBucksBank\bin\Debug\BigBucksBank.pdb
+C:\Users\Zique Yuutaka\Documents\Visual Studio 2015\Projects\BigBucksBank\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.csprojResolveAssemblyReference.cache
+C:\Users\Zique Yuutaka\Documents\Visual Studio 2015\Projects\BigBucksBank\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.LandATM.resources
+C:\Users\Zique Yuutaka\Documents\Visual Studio 2015\Projects\BigBucksBank\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.Properties.Resources.resources
+C:\Users\Zique Yuutaka\Documents\Visual Studio 2015\Projects\BigBucksBank\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.csproj.GenerateResource.Cache
