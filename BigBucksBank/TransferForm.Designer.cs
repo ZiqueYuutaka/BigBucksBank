@@ -31,6 +31,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnTransfer = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label2
@@ -55,12 +56,21 @@
             // 
             // btnTransfer
             // 
-            this.btnTransfer.Location = new System.Drawing.Point(218, 404);
+            this.btnTransfer.Location = new System.Drawing.Point(99, 419);
             this.btnTransfer.Name = "btnTransfer";
             this.btnTransfer.Size = new System.Drawing.Size(171, 44);
             this.btnTransfer.TabIndex = 7;
             this.btnTransfer.Text = "TRANSFER";
             this.btnTransfer.UseVisualStyleBackColor = true;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(340, 419);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(171, 44);
+            this.btnExit.TabIndex = 14;
+            this.btnExit.Text = "EXIT";
+            this.btnExit.UseVisualStyleBackColor = true;
             // 
             // TransferForm
             // 
@@ -68,6 +78,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 532);
             this.ControlBox = false;
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnTransfer);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -83,5 +94,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnTransfer;
+        private System.Windows.Forms.Button btnExit;
     }
 }
