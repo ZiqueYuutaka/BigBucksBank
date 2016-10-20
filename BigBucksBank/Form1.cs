@@ -27,7 +27,7 @@ namespace BigBucksBank
         //private Admin admin, tempAdmin;
         //private bool isAdminOn = false;
         private bool isLockedOut = false;
-        const int TOTAL_ATTEMPTS = 3;
+        const int TOTAL_ATTEMPTS = 1;
         const int SIZE = 5;
         Account[] accounts;
         int acctIndex;
@@ -131,12 +131,12 @@ namespace BigBucksBank
                     tbUsername.Focus();
                     if (isCorrectPin(acctIndex)) //correct USER pin
                     {
-                        txtArea.Text = "Login successful";
-                        tbPIN.Text = "";
-                        //Launch User's ATM interface
 
                         clearFields();
                         login_attempts = 0;
+                        ATMForm acctInterface = new ATMForm();
+                        acctInterface.ShowDialog();
+                        txtArea.Text = accounts[acctIndex].receipt();
 
                     }
                     else //incorrect login pin
