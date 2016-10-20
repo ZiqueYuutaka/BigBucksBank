@@ -30,6 +30,7 @@
         {
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnWithdrawal = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label2
@@ -52,12 +53,22 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Welcome to";
             // 
+            // btnWithdrawal
+            // 
+            this.btnWithdrawal.Location = new System.Drawing.Point(218, 404);
+            this.btnWithdrawal.Name = "btnWithdrawal";
+            this.btnWithdrawal.Size = new System.Drawing.Size(171, 44);
+            this.btnWithdrawal.TabIndex = 7;
+            this.btnWithdrawal.Text = "WITHDRAWAL";
+            this.btnWithdrawal.UseVisualStyleBackColor = true;
+            // 
             // WithdrawalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 532);
             this.ControlBox = false;
+            this.Controls.Add(this.btnWithdrawal);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "WithdrawalForm";
@@ -71,5 +82,6 @@
 
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnWithdrawal;
     }
 }

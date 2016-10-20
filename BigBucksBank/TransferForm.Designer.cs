@@ -30,6 +30,7 @@
         {
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnTransfer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label2
@@ -52,12 +53,22 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Welcome to";
             // 
+            // btnTransfer
+            // 
+            this.btnTransfer.Location = new System.Drawing.Point(218, 404);
+            this.btnTransfer.Name = "btnTransfer";
+            this.btnTransfer.Size = new System.Drawing.Size(171, 44);
+            this.btnTransfer.TabIndex = 7;
+            this.btnTransfer.Text = "TRANSFER";
+            this.btnTransfer.UseVisualStyleBackColor = true;
+            // 
             // TransferForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 532);
             this.ControlBox = false;
+            this.Controls.Add(this.btnTransfer);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "TransferForm";
@@ -71,5 +82,6 @@
 
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnTransfer;
     }
 }

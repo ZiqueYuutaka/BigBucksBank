@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BigBucksBank
 {
-    class Account
+    public class Account
     {
         private string userName;
         private string pin;

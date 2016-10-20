@@ -30,6 +30,8 @@
         {
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.lblBalance = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label2
@@ -52,16 +54,37 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Welcome to";
             // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(218, 404);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(171, 44);
+            this.btnExit.TabIndex = 7;
+            this.btnExit.Text = "EXIT";
+            this.btnExit.UseVisualStyleBackColor = true;
+            // 
+            // lblBalance
+            // 
+            this.lblBalance.AutoSize = true;
+            this.lblBalance.Location = new System.Drawing.Point(236, 202);
+            this.lblBalance.Name = "lblBalance";
+            this.lblBalance.Size = new System.Drawing.Size(35, 13);
+            this.lblBalance.TabIndex = 8;
+            this.lblBalance.Text = "label3";
+            // 
             // BalanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 532);
             this.ControlBox = false;
+            this.Controls.Add(this.lblBalance);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "BalanceForm";
             this.Text = "BalanceForm";
+            this.Load += new System.EventHandler(this.BalanceForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -71,5 +94,7 @@
 
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Label lblBalance;
     }
 }

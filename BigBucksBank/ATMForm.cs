@@ -30,15 +30,23 @@ namespace BigBucksBank
             {
                 case GroupBoxValues.DEPOSIT:
                     Console.WriteLine("Deposit");
+                    DepositForm dForm = new DepositForm();
+                    dForm.Show();
                     break;
                 case GroupBoxValues.WITHDRAWAL:
                     Console.WriteLine("Withdrawal");
+                    WithdrawalForm wForm = new WithdrawalForm();
+                    wForm.Show();
                     break;
                 case GroupBoxValues.BALANCE:
                     Console.WriteLine("Balance");
+                    BalanceForm bForm = new BalanceForm();
+                    bForm.Show();
                     break;
                 case GroupBoxValues.TRANSFER:
                     Console.WriteLine("Transfer");
+                    TransferForm tForm = new TransferForm();
+                    tForm.Show();
                     break;
                 case GroupBoxValues.EXIT:
                     System.Windows.Forms.DialogResult close;

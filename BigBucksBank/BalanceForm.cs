@@ -16,5 +16,15 @@ namespace BigBucksBank
         {
             InitializeComponent();
         }
+
+        private void BalanceForm_Load(object sender, EventArgs e)
+        {
+            lblBalance.Text = LandATM.getLoginAccount().receipt();
+        }
+
+        /*        private void button1_Click(object sender, EventArgs e)
+                {
+
+                }*/
     }
 }

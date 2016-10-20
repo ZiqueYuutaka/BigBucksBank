@@ -29,7 +29,8 @@ namespace BigBucksBank
         private bool isLockedOut = false;
         const int TOTAL_ATTEMPTS = 1;
         const int SIZE = 5;
-        Account[] accounts;
+        private Account[] accounts;
+        private static Account chosen;
         int acctIndex;
         int login_attempts = 0;       
 
@@ -131,7 +132,7 @@ namespace BigBucksBank
                     tbUsername.Focus();
                     if (isCorrectPin(acctIndex)) //correct USER pin
                     {
-
+                        chosen = accounts[acctIndex];
                         clearFields();
                         login_attempts = 0;
                         ATMForm acctInterface = new ATMForm();
@@ -303,6 +304,11 @@ namespace BigBucksBank
         {
             clearFields();
             txtArea.Text = "";
+        }
+
+        public static Account getLoginAccount()
+        {
+            return chosen;
         }
     }
 }

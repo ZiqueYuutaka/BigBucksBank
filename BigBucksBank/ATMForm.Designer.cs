@@ -122,7 +122,7 @@
             // 
             // btnProceed
             // 
-            this.btnProceed.Location = new System.Drawing.Point(219, 305);
+            this.btnProceed.Location = new System.Drawing.Point(218, 404);
             this.btnProceed.Name = "btnProceed";
             this.btnProceed.Size = new System.Drawing.Size(171, 44);
             this.btnProceed.TabIndex = 6;
@@ -137,7 +137,7 @@
             this.gboxMenu.Controls.Add(this.rbBalance);
             this.gboxMenu.Controls.Add(this.rbWithdrawal);
             this.gboxMenu.Controls.Add(this.rbDeposit);
-            this.gboxMenu.Location = new System.Drawing.Point(219, 105);
+            this.gboxMenu.Location = new System.Drawing.Point(219, 149);
             this.gboxMenu.Name = "gboxMenu";
             this.gboxMenu.Size = new System.Drawing.Size(170, 170);
             this.gboxMenu.TabIndex = 10;
