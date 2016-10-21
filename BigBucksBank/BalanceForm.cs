@@ -22,6 +22,19 @@ namespace BigBucksBank
             lblBalance.Text = LandATM.getLoginAccount().receipt();
         }
 
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+
+            System.Windows.Forms.DialogResult close;
+            close = MessageBox.Show("Are you sure you want to EXIT?", "Exiting", MessageBoxButtons.YesNo, MessageBoxIcon.
+                Question);
+
+            if (close == System.Windows.Forms.DialogResult.Yes)
+            {
+                Close();
+            }
+        }
+
         /*        private void button1_Click(object sender, EventArgs e)
                 {
 

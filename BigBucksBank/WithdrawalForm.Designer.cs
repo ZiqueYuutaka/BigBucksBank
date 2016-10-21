@@ -69,6 +69,7 @@
             this.btnWithdrawal.TabIndex = 7;
             this.btnWithdrawal.Text = "WITHDRAWAL";
             this.btnWithdrawal.UseVisualStyleBackColor = true;
+            this.btnWithdrawal.Click += new System.EventHandler(this.btnWithdrawal_Click);
             // 
             // btnExit
             // 
@@ -78,6 +79,7 @@
             this.btnExit.TabIndex = 13;
             this.btnExit.Text = "EXIT";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // groupBox1
             // 
@@ -100,6 +102,7 @@
             this.rbSavings.TabStop = true;
             this.rbSavings.Text = "Savings";
             this.rbSavings.UseVisualStyleBackColor = true;
+            this.rbSavings.CheckedChanged += new System.EventHandler(this.rbSavings_CheckedChanged);
             // 
             // rbChecking
             // 
@@ -111,6 +114,7 @@
             this.rbChecking.TabStop = true;
             this.rbChecking.Text = "Checking";
             this.rbChecking.UseVisualStyleBackColor = true;
+            this.rbChecking.CheckedChanged += new System.EventHandler(this.rbChecking_CheckedChanged);
             // 
             // rtbMessage
             // 

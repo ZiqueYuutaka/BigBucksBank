@@ -81,6 +81,7 @@
     <Compile Include="TransferForm.Designer.cs">
       <DependentUpon>TransferForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Validator.cs" />
     <Compile Include="WithdrawalForm.cs">
       <SubType>Form</SubType>
     </Compile>
