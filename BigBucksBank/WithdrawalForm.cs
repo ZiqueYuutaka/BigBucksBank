@@ -42,10 +42,10 @@ namespace BigBucksBank
         {
             rtbMessage.Text =
                 "-------------------------------------------------\n" +
-                "                 TRANSACTION                     \n" +
+                "             WITHDRAWAL COMPLETE                 \n" +
                 "-------------------------------------------------\n" +
                 "Withdrawn:\t" + amountWithdrawn.ToString("c") + "\n" +
-                accountType + " Balance:\t" + newAcctAmount.ToString("c");
+                accountType + " Balance:\n" + newAcctAmount.ToString("c");
         }
 
         private void btnWithdrawal_Click(object sender, EventArgs e)
