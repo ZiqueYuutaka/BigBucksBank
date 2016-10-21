@@ -16,7 +16,7 @@ namespace BigBucksBank
     {
         public delegate bool ChangeHandler(TextBox tb);
         public event ChangeHandler usernameChanged;
-        public event ChangeHandler pinChanged;
+        //public event ChangeHandler pinChanged;
 
         /*private struct Admin
         {
@@ -25,11 +25,12 @@ namespace BigBucksBank
 
         }*/
         //private Admin admin, tempAdmin;
-        private bool isAdminOn = false;
+        //private bool isAdminOn = false;
         private bool isLockedOut = false;
-        const int TOTAL_ATTEMPTS = 3;
+        const int TOTAL_ATTEMPTS = 1;
         const int SIZE = 5;
-        Account[] accounts;
+        private Account[] accounts;
+        private static Account chosen;
         int acctIndex;
         int login_attempts = 0;       
 
@@ -43,9 +44,11 @@ namespace BigBucksBank
             //admin = new Admin();
 
             this.usernameChanged = new LandATM.ChangeHandler(isAdminUsername);
-            this.pinChanged = new LandATM.ChangeHandler(isAdminPIN);
+           // this.pinChanged = new LandATM.ChangeHandler(isAdminPIN);
 
             loadAccounts();
+
+            btnPower.Hide();
 
             //DEBUG
             printAccounts();
@@ -107,32 +110,63 @@ namespace BigBucksBank
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            acctIndex = accountExists();
-            if (acctIndex != -1)
-            {
-                Console.WriteLine("User found");
-                tbUsername.Focus();
-                if (isCorrectPin(acctIndex))
+            
+            if (isLockedOut)
+            {                
+                if(isAdminUsername(tbUsername) && isAdminPIN(tbPIN)) //The machine is locked
                 {
-                    Console.WriteLine("Login successful");
-                    tbPIN.Text = "";
-                    //Launch User's ATM interface
-
-                    clearFields();
-                    login_attempts = 0;
-
+                    Console.WriteLine("Unlocking Machine");
+                    unlockMachineWithMsg("ATM unlock successful");
                 }
                 else
                 {
-                    loginIncorrect();
-                    Console.WriteLine("Incorrect PIN");
+                    incorrectAdminLogin();
                 }
-
-            }else
-            {
-                loginIncorrect();
-                Console.WriteLine("User NOT found");
             }
+            else
+            {
+                acctIndex = accountExists();
+                if (acctIndex != -1)
+                {
+                    Console.WriteLine("User found");
+                    tbUsername.Focus();
+                    if (isCorrectPin(acctIndex)) //correct USER pin
+                    {
+                        chosen = accounts[acctIndex];
+                        clearFields();
+                        login_attempts = 0;
+                        ATMForm acctInterface = new ATMForm();
+                        acctInterface.ShowDialog();
+                        txtArea.Text = accounts[acctIndex].receipt();
+
+                    }
+                    else //incorrect login pin
+                    {
+                        loginIncorrect();
+                        Console.WriteLine("Incorrect PIN");
+                    }
+
+                }
+                else if (isAdminUsername(tbUsername)) //Power down machine
+                {
+                    if (isAdminPIN(tbPIN))
+                    {
+                        txtArea.Text = "Power down sequence initiated";
+                        showButtons(false);
+                        btnPower.Show();
+                    }
+                    else
+                    {
+                        incorrectAdminLogin();
+                    }
+                }
+                else//no user found
+                {
+                    loginIncorrect();
+                    Console.WriteLine("User NOT found");
+                }
+            }
+            
         }
 
         private int accountExists()
@@ -171,10 +205,17 @@ namespace BigBucksBank
                 txtArea.Text = "PLEASE SEE A BANK OFFICER-NO FURTHER LOGIN ATTEMPTS ALLOWED";
                 clearFields();
                 showButtons(false);
-                enableButtons(false);
+                //enableButtons(false);
                 tbPIN.Enabled = false;
                 isLockedOut = true;
             }
+        }
+
+        private void incorrectAdminLogin()
+        {
+            txtArea.Text = "Incorrect ADMIN PIN";
+            tbPIN.Text = "";
+            tbPIN.Focus();
         }
 
         private void showButtons(bool val)
@@ -190,19 +231,18 @@ namespace BigBucksBank
             }
         }
 
-        private void enableButtons(bool val)
+        /*private void enableButtons(bool val)
         {
             btnClear.Enabled = val;
             btnLogin.Enabled = val;
-        }
+        }*/
 
         private void tbUsername_TextChanged(object sender, EventArgs e)
         {
-            if (usernameChanged(tbUsername))
+            if (usernameChanged(tbUsername) && isLockedOut)
             {
                 showButtons(true);
                 tbPIN.Enabled = true;
-
             }
         }
 
@@ -218,26 +258,20 @@ namespace BigBucksBank
         private bool isAdminPIN(TextBox textBox)
         {
             if (textBox.Text.Equals("12345"))
-            {
+            {                
                 return true;
             }
             return false;
         }
 
-        private void tbPIN_TextChanged(object sender, EventArgs e)
+        public void unlockMachineWithMsg(string message)
         {
-            if (pinChanged(tbPIN) && isLockedOut) {
-                enableButtons(true);
-                login_attempts = 0;
-                clearFields();
-                txtArea.Text = "ATM unlock successful";
-                isLockedOut = false;
-            }
-            else
-            {
-                txtArea.Enabled = false;
-                showButtons(false);
-            }
+            //enableButtons(true);
+            showButtons(true);
+            login_attempts = 0;
+            clearFields();
+            txtArea.Text = message;
+            isLockedOut = false;
         }
 
         private void clearFields()
@@ -249,7 +283,33 @@ namespace BigBucksBank
 
         private void btnPower_Click(object sender, EventArgs e)
         {
+            Console.WriteLine("Power button clicked");
+            System.Windows.Forms.DialogResult result;
+            result = MessageBox.Show("Power down ATM?", "Power Down", MessageBoxButtons.YesNo, 
+                MessageBoxIcon.Question);
 
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                AccountsDAO.SaveAmounts(accounts);
+                Close();
+            }
+            else //Admin decides to keep ATM running
+            {
+                btnPower.Hide();
+                unlockMachineWithMsg("Power down sequence cancelled");                
+            }
+
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            clearFields();
+            txtArea.Text = "";
+        }
+
+        public static Account getLoginAccount()
+        {
+            return chosen;
         }
     }
 }

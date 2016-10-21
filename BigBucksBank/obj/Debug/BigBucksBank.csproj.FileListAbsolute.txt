@@ -16,3 +16,13 @@ C:\Users\Zique Yuutaka\Documents\Visual Studio 2015\Projects\BigBucksBank\BigBuc
 C:\Users\Zique Yuutaka\Documents\Visual Studio 2015\Projects\BigBucksBank\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.LandATM.resources
 C:\Users\Zique Yuutaka\Documents\Visual Studio 2015\Projects\BigBucksBank\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.Properties.Resources.resources
 C:\Users\Zique Yuutaka\Documents\Visual Studio 2015\Projects\BigBucksBank\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.csproj.GenerateResource.Cache
+D:\VisualStudioProjects\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.ATMForm.resources
+D:\VisualStudioProjects\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.BalanceForm.resources
+D:\VisualStudioProjects\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.DepositForm.resources
+D:\VisualStudioProjects\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.TransferForm.resources
+D:\VisualStudioProjects\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.WithdrawalForm.resources
+C:\Users\Zique Yuutaka\Documents\Visual Studio 2015\Projects\BigBucksBank\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.ATMForm.resources
+C:\Users\Zique Yuutaka\Documents\Visual Studio 2015\Projects\BigBucksBank\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.BalanceForm.resources
+C:\Users\Zique Yuutaka\Documents\Visual Studio 2015\Projects\BigBucksBank\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.DepositForm.resources
+C:\Users\Zique Yuutaka\Documents\Visual Studio 2015\Projects\BigBucksBank\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.TransferForm.resources
+C:\Users\Zique Yuutaka\Documents\Visual Studio 2015\Projects\BigBucksBank\BigBucksBank\BigBucksBank\obj\Debug\BigBucksBank.WithdrawalForm.resources

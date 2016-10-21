@@ -94,7 +94,6 @@
             this.tbPIN.Name = "tbPIN";
             this.tbPIN.Size = new System.Drawing.Size(209, 20);
             this.tbPIN.TabIndex = 5;
-            this.tbPIN.TextChanged += new System.EventHandler(this.tbPIN_TextChanged);
             // 
             // btnLogin
             // 
@@ -114,6 +113,7 @@
             this.btnClear.TabIndex = 7;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // txtArea
             // 
@@ -140,6 +140,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(640, 532);
+            this.ControlBox = false;
             this.Controls.Add(this.txtArea);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnLogin);

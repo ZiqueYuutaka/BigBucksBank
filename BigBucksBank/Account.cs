@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BigBucksBank
 {
-    class Account
+    public class Account
     {
         private string userName;
         private string pin;
@@ -149,11 +149,11 @@ namespace BigBucksBank
                 "-------------------------------------------------\n" +
                 "                   ACCOUNT                       \n" +
                 "-------------------------------------------------\n" +
-                "Username:     " + userName + "\n" +
-                "CHECKINGACCT: " + checkingAccount + "\n" +
-                "CHECKING:     " + checkingAmount.ToString("c") + "\n" +
-                "SAVINGSACCT:  " + savingAccount + "\n" +
-                "SAVINGS:      " + savingsAmount.ToString("c");
+                "Username:\t" + userName + "\n" +
+                "CHECKINGACCT:\t" + checkingAccount + "\n" +
+                "CHECKING:\t" + checkingAmount.ToString("c") + "\n" +
+                "SAVINGSACCT:\t" + savingAccount + "\n" +
+                "SAVINGS:\t" + savingsAmount.ToString("c");
         }
     }
 }
