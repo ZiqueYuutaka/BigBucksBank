@@ -17,22 +17,16 @@ namespace BigBucksBank
         public delegate bool ChangeHandler(TextBox tb);
         public event ChangeHandler usernameChanged;
         //public event ChangeHandler pinChanged;
-
-        /*private struct Admin
-        {
-            public string name;
-            public string pin;
-
-        }*/
-        //private Admin admin, tempAdmin;
-        //private bool isAdminOn = false;
+        
         private bool isLockedOut = false;
         const int TOTAL_ATTEMPTS = 1;
         const int SIZE = 5;
-        private Account[] accounts;
+        private List<Account> accounts;
         private static Account chosen;
         int acctIndex;
-        int login_attempts = 0;       
+        int login_attempts = 0;
+        private string pinStr = "";
+        private int pinIndex = 0;       
 
         public LandATM()
         {
@@ -47,6 +41,8 @@ namespace BigBucksBank
            // this.pinChanged = new LandATM.ChangeHandler(isAdminPIN);
 
             loadAccounts();
+
+            setupPINField();
 
             btnPower.Hide();
 
@@ -77,27 +73,17 @@ namespace BigBucksBank
                                        "999999",
                                        "000000"};
 
-            accounts = new Account[SIZE];
-            Random randAcct = new Random(123);
-            decimal temp;
-            for (int i = 0, j = 0; i < SIZE; i++)
+            accounts = AccountsDAO.GetAccountAmounts();
+            int i = 0;
+            int j = 0;
+            foreach(Account account in accounts)
             {
-                accounts[i] = new Account();
-                accounts[i].UserName = userNames[i];
-                accounts[i].Pin = pins[i];
-                accounts[i].CheckingAccount = accountNumbers[j++];
-                accounts[i].SavingsAccount = accountNumbers[j++];
-                temp = Convert.ToDecimal(randAcct.Next(1000, 9999));
-                accounts[i].CheckingAmount = temp;
-                temp = Convert.ToDecimal(randAcct.Next(10000, 99999));
-                accounts[i].SavingsAmount = temp;
+                account.UserName = userNames[i];
+                account.Pin = pins[i];
+                account.CheckingAccount = accountNumbers[j++];
+                account.SavingsAccount = accountNumbers[j++];
+                i++;
             }
-            //Create admin account
-            /*admin.name = "ADMIN";
-            admin.pin = "12345";
-
-            tempAdmin.name = "";
-            tempAdmin.pin = "";*/
         }
 
         private void printAccounts()
@@ -171,11 +157,12 @@ namespace BigBucksBank
 
         private int accountExists()
         {
-            for (int i = 0; i < SIZE; i++)
+            //for (int i = 0; i < SIZE; i++)
+            foreach(Account account in accounts)
             {
-                if (accounts[i].UserName.Equals(tbUsername.Text))
+                if (account.UserName.Equals(tbUsername.Text))
                 {
-                    return i;
+                    return accounts.IndexOf(account);
                 }
             }
             return -1;
@@ -310,6 +297,13 @@ namespace BigBucksBank
         public static Account getLoginAccount()
         {
             return chosen;
+        }
+
+        private void setupPINField()
+        {
+            tbPIN.Text = "";
+            tbPIN.PasswordChar = '*';
+            tbPIN.MaxLength = 5;
         }
     }
 }

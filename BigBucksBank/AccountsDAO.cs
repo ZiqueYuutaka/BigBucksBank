@@ -12,7 +12,7 @@ namespace BigBucksBank
         //private const string dir = @"C:\Users\Zique Yuutaka\Documents\Visual Studio 2015\Projects\BigBucksBank\BigBucksBank\BigBucksBank";
         private const string file = "AccountAmounts.txt";
 
-        public static void SaveAmounts(Account[] accounts)
+        public static void SaveAmounts(List<Account> accounts)
         {
             StreamWriter textOut =
             new StreamWriter(
