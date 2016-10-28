@@ -60,6 +60,7 @@
     <Compile Include="BalanceForm.Designer.cs">
       <DependentUpon>BalanceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BinaryAccountDAO.cs" />
     <Compile Include="DepositForm.cs">
       <SubType>Form</SubType>
     </Compile>

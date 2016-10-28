@@ -73,7 +73,14 @@ namespace BigBucksBank
                                        "999999",
                                        "000000"};
 
-            accounts = AccountsDAO.GetAccountAmounts();
+            accounts = BinaryAccountDAO.GetAccountAmounts();
+            if(accounts.Count == 0)
+            {
+                for(int k = 0; k < SIZE; k++)
+                {
+                    accounts.Add(new Account());
+                }
+            }
             int i = 0;
             int j = 0;
             foreach(Account account in accounts)
@@ -277,7 +284,7 @@ namespace BigBucksBank
 
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
-                AccountsDAO.SaveAmounts(accounts);
+                BinaryAccountDAO.SaveAmounts(accounts);
                 Close();
             }
             else //Admin decides to keep ATM running
